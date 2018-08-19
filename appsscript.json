@@ -1,0 +1,18 @@
+{
+  "timeZone": "Asia/Calcutta",
+  "dependencies": {
+  },
+  "exceptionLogging": "STACKDRIVER",
+  "sheets": {
+    "macros": [{
+      "menuName": "Untitled Macro",
+      "functionName": "UntitledMacro"
+    }, {
+      "menuName": "1",
+      "functionName": "_1"
+    }, {
+      "menuName": "2",
+      "functionName": "_2"
+    }]
+  }
+}

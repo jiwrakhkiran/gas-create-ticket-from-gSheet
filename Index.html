@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <base target="_top">
+      <script>
+         function verifyConnect() {
+             var userName = document.getElementById("userName").value;
+             var password = document.getElementById("password").value;
+             google.script.run.showAlert(userName, password);
+         }
+         function populateTCs() {
+             var userName = document.getElementById("userName").value;
+             var password = document.getElementById("password").value;
+             var test = document.getElementById("testCases").value;
+             var project = document.getElementById("projectKey").value;
+             var epic = document.getElementById("epic").value;
+             var e2e = document.getElementById("e2e").value;
+             var assign = "Kiran.Jiwrakh"
+             google.script.run.populateTestCaseDetails(userName, password, test, project, epic, e2e, "Kiran.Jiwrakh");
+         }
+         
+         function createJiras() {
+             var userName = document.getElementById("userName").value;
+             var password = document.getElementById("password").value;
+             var project = document.getElementById("projectKey").value;
+             var epic = document.getElementById("epic").value;
+             var e2e = document.getElementById("e2e").value;
+             var assign = document.getElementById("e2e").value;
+             google.script.run.createJiraIssue("Kiran.Jiwrakh", userName, password);
+         }
+         
+         function cleanUp() {
+             var userName = document.getElementById("userName").value;
+             google.script.run.deleteCreatedSheet(userName);
+             // google.script.host.close()
+         }
+      </script>
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-tagsinput/1.3.6/jquery.tagsinput.min.css">
+      <!-- Optional theme -->
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+      <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-tagsinput/1.3.6/jquery.tagsinput.min.js"></script>
+   <body>
+      <div class="container">
+      <div align="right">
+         <input type="button" value="Delete Created Sheet" onclick="cleanUp()"/>
+      </div>
+      <div>
+      </div>
+      Connect to central
+      <div class="panel panel-primary">
+         <div class="panel-body">
+            <div class="card mt-3">
+               <div class="card-body">
+                  <div class="" style="padding-bottom:2%;">
+                     <div class="col-md-6">
+                        <label>User Name</label>
+                        <input id="userName" class="form-control">
+                     </div>
+                     <div class="col-md-6">
+                        <label>Pasword</label>
+                        <input id="password" class="form-control" type="password">
+                     </div>
+                     <div class="col-md-6">
+                        <label> Comma Seprated TCs </label>
+                        <textarea class="form-control" id="testCases"> </textarea>
+                     </div>
+                     <div class="col-md-6">
+                        <label> Project</label>
+                        <select class="form-control col-md-6" id="projectKey">
+                           <option value="JVSRCH">JVSRCH</option>
+                           <option value="SPC">SPC</option>
+                        </select>
+                     </div>
+                     <div class="col-md-6">
+                        <label>Epic</label>
+                        <input class="form-control" id="epic">
+                     </div>
+                     <div class="col-md-6">
+                        <label> E2E link </label>
+                        <input class="form-control" id="e2e">
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="col-md-offset-4 col-md-4">
+               <button id ='subBtn' type="submit" class="btn-block btn-primary" onclick="populateTCs()">Populate Test Cases</button>
+            </div>
+         </div>
+      </div>
+      <div>
+      <div class="panel panel-primary">
+         <div class="panel-body">
+            <div class="card mt-3">
+               <div class="card-body">
+                  <div class="" style="padding-bottom:2%;">
+                  </div>
+               </div>
+            </div>
+            <div class="col-md-offset-4 col-md-4">
+               <button id ='subBtn1' type="submit" class="btn-block btn-primary" onclick="createJiras()">Create JIRAs</button>
+            </div>
+         </div>
+      </div>
